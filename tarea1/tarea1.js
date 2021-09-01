@@ -11,7 +11,6 @@ llenarArreglo(3, "b");
 // --------------------------------------------------
 
 //2 Escriba una función que le dé vuelta a un arreglo.
-
 function revertirArreglo(arreglo) {
   console.log(arreglo.reverse());
 }
@@ -63,30 +62,26 @@ revertirLlaveValor(arregloLlaveValor);
 
 // 5 Escriba una función que reciba un arreglo y devuelva un arreglo sin elementos duplicados, PERO no pueden usar el new Set() de JS.
 function removerDuplicados(arreglo) {
-  // Escriba su código aquí
+  const result = [...new Set(arreglo)];
+  console.log(result);
 }
-// Ejemplo
 const arregloDuplicados = [1, 2, 3, 1, 2];
 removerDuplicados(arregloDuplicados);
-// Espero que retorne [1, 2, 3]
 
 // ------------------------------------------------
 
 // 6 Escriba una función que reciba dos arreglos y devuelva la intersección. devolver los elementos que están en los dos arreglos.
-
 function encontrarInterseccion(arreglo1, arreglo2) {
-  // Escriba su código aquí
+  var elementosComunes = arreglo1.filter((x) => arreglo2.indexOf(x) !== -1);
+  console.log(elementosComunes);
 }
-// Ejemplo
+
 const arr1 = [1, 2, 3, 4];
 const arr2 = [3, 4, 5, 6];
 encontrarInterseccion(arr1, arr2);
-// Espero que retorne [3,4]
-
 // ----------------------------------------
 
 // 7 Escriba una función que reciba un variable y diga si es un arreglo.
-
 function esArreglo(variable) {
   if (Array.isArray(variable)) {
     console.log("Es un arreglo");
@@ -96,7 +91,6 @@ function esArreglo(variable) {
 }
 const variable = [];
 esArreglo(variable);
-
 // ---------------------------------------------
 
 // 8 Escriba una función que reciba un arreglo y lo clone, es decir, devuelva un arreglo igual.
@@ -120,22 +114,57 @@ concatenarStrings(concatenarArreglo);
 
 // 10 Escriba una función que reciba un número e inserte un '-' menos entre los números pares y un '*' asterico entre dos números impares.
 function formatearNumero(numero) {
-  // Escriba su código aquí
+  var arregloNumeros = [],
+    stringNumeros = numero.toString();
+
+  for (var i = 0, len = stringNumeros.length; i < len; i += 1) {
+    arregloNumeros.push(+stringNumeros.charAt(i));
+  }
+
+  var numeroSiguiente;
+  var numeroActual;
+  var primeroEsPar;
+  var segundoEsPar;
+  var resultado = "";
+  for (let i = 0; i < arregloNumeros.length; i++) {
+    numeroActual = arregloNumeros[i];
+    numeroSiguiente = arregloNumeros[i + 1];
+    if (numeroActual % 2 === 0) {
+      primeroEsPar = true;
+    } else {
+      primeroEsPar = false;
+    }
+
+    if (numeroSiguiente % 2 === 0) {
+      segundoEsPar = true;
+    } else {
+      segundoEsPar = false;
+    }
+
+    if (primeroEsPar && segundoEsPar) {
+      resultado += numeroActual;
+      resultado += "-";
+    } else if (!primeroEsPar && !segundoEsPar) {
+      resultado += numeroActual;
+      resultado += "*";
+    } else {
+      resultado += numeroActual;
+    }
+  }
+  console.log(resultado);
 }
-// Ejemplo
-const mumero = 134245780;
+const numero = 134245780;
 formatearNumero(numero);
-// Espero que retorne '1*34-2-45*78-0'
 // -----------------------------------------
 
 // 11 Escriba una función que "revuelva" un arreglo. O sea, que cambie los elementos de posición al azar. Pueden usar Math.random()
 function barajarArreglo(arreglo) {
-  // Escriba su código aquí
+  const arregloBarajado = arreglo.sort((a, b) => 0.5 - Math.random());
+  console.log(arregloBarajado);
 }
-// Ejemplo
+
 const barajasArreglo = [1, 2, 3, 4];
 barajarArreglo(barajasArreglo);
-// Espero que retorne los elementos en ordenes diferentes cada vez
 // ---------------------------------------
 
 // 12 Escriba una función que encuentre los valores repetidos de un arreglo.
@@ -158,23 +187,24 @@ econtrarDuplicados(arregloDuplicados);
 
 // 13 Escriba una función que encuentre la diferencia de dos arreglos, es decir, devolver los valores que solo están en uno y no en el otro.
 function encontrarDiferencia(arreglo1, arreglo2) {
-  // Escriba su código aquí
+  const diferencia = arreglo1
+    .filter((x) => !arreglo2.includes(x))
+    .concat(arreglo2.filter((x) => !arreglo1.includes(x)));
+  console.log(diferencia);
 }
-// Ejemplo
-const diferenciaAarr1 = [1, 2, 3, 4];
-const diferenceiaArr2 = [3, 4, 5, 6];
-revertirLlaveValor(arregloLlaveValor);
-// Espero que retorne [1, 2, 5, 6]
+
+const diferenciaArr1 = [1, 2, 3, 4];
+const diferenciaArr2 = [3, 4, 5, 6];
+encontrarDiferencia(diferenciaArr1, diferenciaArr2);
 // -----------------------------------
 
 // 14 Escriba una función que 'aplane' un arreglo.
 function aplanarArreglo(arreglo) {
-  // Escriba su código aquí
+  const resultado = arreglo.flat();
+  console.log(resultado);
 }
-// Ejemplo
 const aplanarArr = [[1, 2], 3, 4, 5, [6, 7, 8]];
 aplanarArreglo(aplanarArr);
-// Espero que retorne [1, 2, 3, 4, 5, 6, 7, 8]
 // -----------------------------------
 
 // 15 Escriba una función que imprima en consola "Hola Mundo!"
@@ -206,7 +236,7 @@ ExtraerNCaracteres("Hola", 2);
 
 // 18 Escriba una función que ponga la primera letra en mayúscula y el resto minúsculas.
 function primeraLetraMayuscula(palabra) {
-  const result = palabra;
+  const result = palabra.charAt(0).toUpperCase() + palabra.slice(1);
   console.log(result);
 }
 primeraLetraMayuscula("prueba");
@@ -231,21 +261,82 @@ ordenarObjectos(arregloObjectos);
 // -----------------------------------
 
 // 20 Escriba una función que reciba un número (lo reciben como string) y le dé la vuelta.
+function revertirString(numero) {
+  const numeroRevertido = numero.split("").reverse().join("");
+  console.log(numeroRevertido);
+}
 
+revertirString("Cinco");
 // -----------------------------------
 
 // 21 Escriba una función que reciba un string y diga si es palíndromo o no.
-
+function esPalindromo(palabra) {
+  var palabraReversa = palabra.split("").reverse().join("");
+  if (palabraReversa === palabra) {
+    console.log("Es una palabra palindroma");
+  } else {
+    console.log("No es una palabra palindroma");
+  }
+}
+const texto = "hellolleh";
+esPalindromo(texto);
 // -----------------------------------
 
 // 22 Escriba una función que reciba un string y encuentre la palabra más grande del string.
-
+function encontrarPalabraMasGrande(frase) {
+  var fraseSeparada = frase.split(" ");
+  var palabraMasLarga = 0;
+  var palabraMasLargaString = "";
+  for (var i = 0; i < fraseSeparada.length; i++) {
+    if (fraseSeparada[i].length > palabraMasLarga) {
+      palabraMasLarga = fraseSeparada[i].length;
+      palabraMasLargaString = fraseSeparada[i];
+    }
+  }
+  console.log(palabraMasLargaString);
+}
+encontrarPalabraMasGrande("Esto es una prueba de palabra larga");
 // -----------------------------------
 
 // 23 Escriba una función que reciba un arreglo y una función y ejecute la función en cada elemento del arreglo.
+function recibeArregloYFuncion(arreglo, funcion) {
+  for (let i = 0; i < arreglo.length; i++) {
+    funcion(arreglo[i]);
+  }
+}
 
+function sumarDies(numero) {
+  const nuevoNumero = numero + 10;
+  console.log(nuevoNumero);
+}
+const arreglo = [1, 2, 3, 4];
+recibeArregloYFuncion(arreglo, sumarDies);
 // -----------------------------------
 
 // 24 Escriba una función que reciba un arreglo y una función, si la función devuelve true agrega el elemento a un arreglo de los que pasaron y sino a un arreglo de los que NO pasaron, imprime los dos.
+function recibeArregloYFuncion2(arreglo, funcion) {
+  var arregloActual = [];
+  arregloActual.push(arreglo);
+  var nuevoArreglo = [];
+  for (let i = 0; i < arreglo.length; i++) {
+    if (funcion(arreglo[i]) === true) {
+      arregloActual.push(arreglo[i]);
+    } else {
+      nuevoArreglo.push(arreglo[i]);
+    }
+  }
+  console.log("Arreglo viejo: " + arregloActual);
+  console.log("Arreglo nuevo: " + nuevoArreglo);
+}
+
+function validarNumeroPar(numero) {
+  if (numero % 2 === 0) {
+    return true;
+  } else {
+    return false;
+  }
+}
+const arr = [1, 2, 3, 4];
+recibeArregloYFuncion2(arr, validarNumeroPar);
 
 // -----------------------------------
