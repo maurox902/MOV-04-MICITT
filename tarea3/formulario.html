@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Formulario de Reservaciones - Tarea 3</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="/css/bootstrap.min.css">    
+      <!-- Site CSS -->
+      <link rel="stylesheet" href="/css/formulario.css">    
+      <!-- Responsive CSS -->
+      <link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body>
+	<!-- Inicia seccion de Reservaciones -->
+	<div class="reservation-box">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="heading-title text-center">
+						<h2>Reservaciones</h2>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-lg-12 col-sm-12 col-xs-12">
+					<div class="contact-block">
+						<form id="contactForm">
+							<div class="row">
+								<div class="col-md-12">
+									<h3>Informacion para reserva</h3>
+                                    <div class="col-md-12">
+										<div class="form-group">
+											<select class="custom-select d-block form-control" id="person" required data-error="Por favor seleccione uno de nuestros restaurantes">
+											  <option disabled selected>Seleccione un Restaurante</option>
+											  <option value="Hamburguesas">Hamburguesas donde Mauro</option>
+											  <option value="Pizzeria">Pizzeria donde Mauro</option>
+											  <option value="Carnes">Carnes y Mariscos donde Mauro</option>
+											  <option value="Postres">Postres donde Mauro</option>
+											  <option value="Heladeria">Heladeria donde Mauro</option>
+											</select>
+											<div class="help-block with-errors"></div>
+										</div> 
+									</div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Fecha de reserva</label>
+                                            <input class="custom-select d-block form-control" name="fecha-reserva" type="date">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+										<div class="form-group">
+                                            <div>
+                                                <label>Horario</label>
+                                                <div>
+                                                  <input required type="radio" name="horario" value="1" id="horarioDiurno">
+                                                  <label for="horarioDiurno">Diurno</label>
+                                                </div>
+                                                <div>
+                                                  <input type="radio" name="horario" value="2" id="horarioNocturno">
+                                                  <label for="horarioNocturno">Nocturno</label>
+                                                </div>
+                                              </div>
+										</div> 
+									</div>
+									<div class="col-md-12">
+										<div class="form-group">
+											<select class="custom-select d-block form-control" id="person" required data-error="Por favor ingrese la cantidad de personas">
+											  <option disabled selected>Numero de personas</option>
+											  <option value="1">1</option>
+											  <option value="2">2</option>
+											  <option value="3">3</option>
+											  <option value="4">4</option>
+											  <option value="5">5</option>
+											  <option value="6">6</option>
+											  <option value="7">7</option>
+											</select>
+											<div class="help-block with-errors"></div>
+										</div> 
+									</div>
+									<div class="col-md-12">
+										<div class="form-group">
+											<input type="text" class="form-control" id="name" name="name" placeholder="Su Nombre" required data-error="Por favor ingrese su nombre">
+											<div class="help-block with-errors"></div>
+										</div>                                 
+									</div>
+									<div class="col-md-12">
+										<div class="form-group">
+											<input type="text" placeholder="Su email" id="email" class="form-control" name="email" required data-error="Por favor ingrese su email">
+											<div class="help-block with-errors"></div>
+										</div> 
+									</div>
+									<div class="col-md-12">
+										<div class="form-group">
+											<input type="text" placeholder="Su telefono" id="phone" class="form-control" name="phone" required data-error="Por favor ingrese su numero de telefono">
+											<div class="help-block with-errors"></div>
+										</div> 
+									</div>
+								</div>
+								<div class="col-md-12">
+									<div class="submit-button text-center">
+										<button class="btn btn-common" id="submit" type="submit">Reserva una Mesa</button>
+										<div id="msgSubmit" class="h3 text-center hidden"></div> 
+										<div class="clearfix"></div> 
+									</div>
+								</div>
+							</div>            
+						</form>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	<!-- Finaliza seccion de Reservaciones -->
+
+	 <!-- Archivos JS -->
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.superslides.min.js"></script>
+	<script src="js/form-validator.min.js"></script>
+</body>
+</html>
